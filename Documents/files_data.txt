@@ -1,0 +1,17 @@
+in this file, its explained that what does each file do.
+
+LogSentinel/
+├── .gitignore
+├── app.py
+├── analyzer.py
+├── main.py
+├── create_admin.py
+├── sample.log
+└── templates/
+    ├── login.html
+    ├── register.html
+    ├── dashboard.html
+    └── user_dashboard.html
+
+
+this is file strcuture.

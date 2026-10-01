@@ -1,0 +1,33 @@
+This simple program is divied into 5 parts. Follow each part to complete it and make  sure to test after every part is done.
+
+
+
+
+{{{{  PART - 1 }}}}
+
+
+
+Step 1: setting up
+Step 2: setting up git and all
+
+Step 3: Creating the project structure 
+
+this is the structure of the whole folder 
+
+
+LogSentinel/
+├── .gitignore
+├── app.py
+├── analyzer.py
+├── main.py
+├── create_admin.py
+├── sample.log
+└── templates/
+    ├── login.html
+    ├── register.html
+    ├── dashboard.html
+    └── user_dashboard.html
+
+
+make files and move to next step
+
