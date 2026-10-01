@@ -31,3 +31,9 @@ LogSentinel/
 
 make files and move to next step
 
+
+
+{{{{  PART - 2 }}}}
+
+
+Step 1: Create a simple sample security-log entries in file "sample.log" {purpose: just for testing}
