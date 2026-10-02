@@ -49,3 +49,4 @@ Step 4: Extract failed-login IPs and count attempts per IP
 Step 5: Detect suspicious IPs
 
 Step 6: Save the report in a file 
+Step 7: improving the report file, Completing terminal security log analyzer

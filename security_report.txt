@@ -1,7 +1,14 @@
 LogSentinel Security Report
 ===========================
+Report generated: 2026-10-02 04:17:31
 Total entries found: 11
 Successful logins: 3
 Failed logins: 4
 Signed in entries: 1
 Signed out entries: 2
+
+Failed Login Attempts by IP:
+-----------------------------
+IP: 203.0.113.15 | Failed attempts: 3
+WARNING: Suspicious IP detected: 203.0.113.15
+IP: 198.51.100.23 | Failed attempts: 1

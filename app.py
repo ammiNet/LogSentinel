@@ -1,4 +1,5 @@
 from colorama import Fore, init
+from datetime import datetime
 
 init(autoreset=True)        #  note: this is optional (this can add colors to your terminal lines)   
 
@@ -96,13 +97,29 @@ if save_report.lower() == "yes":
     with open("security_report.txt", "w") as report:
         report.write("LogSentinel Security Report\n")
         report.write("===========================\n")
+        report.write(
+            f"Report generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n"
+        )
+
         report.write(f"Total entries found: {len(entrieslines)}\n")
         report.write(f"Successful logins: {len(successful_attempts)}\n")
         report.write(f"Failed logins: {len(failed_attempts)}\n")
         report.write(f"Signed in entries: {len(signed_in)}\n")
         report.write(f"Signed out entries: {len(signed_out)}\n")
 
-    print(Fore.GREEN + "Report saved to report_log_analyzer.txt")
+        report.write("\nFailed Login Attempts by IP:\n")
+        report.write("-----------------------------\n")
+
+        for ip in set(failed_login_ips):
+            attempt_count = failed_login_ips.count(ip)
+            report.write(f"IP: {ip} | Failed attempts: {attempt_count}\n")
+
+            if attempt_count >= 3:
+                report.write(
+                    f"WARNING: Suspicious IP detected: {ip}\n"
+                )
+
+    print(Fore.GREEN + "Report saved to security_report.txt")
 
 else:
     print("Report was not saved, as you pressed no!")
