@@ -41,7 +41,14 @@ for line_out in total_lines():
     if  "Logout" in line_out:
         signed_out.append(line_out)        
 
+# gettig ips of login that were failed
 
+failed_login_ips = []
+
+for line in failed_attempts:
+    p = line.split()
+    ip = p[-1].replace("ip=", "")
+    failed_login_ips.append(ip)
 
 print(f"Total entries found : {len(entrieslines)}")
 print("\n")
@@ -51,3 +58,11 @@ print(Fore.RED + f"Total failed logins : {len(failed_attempts)}")
 
 print(f"Total signed in users : {len(signed_in)}")
 print(f"Total signed out users : {len(signed_out)}")
+
+
+
+# loop for failed ip
+print("\nFailed login attempts by IP:")
+for ip in set(failed_login_ips):
+    attempt_count = failed_login_ips.count(ip)
+    print(f"IP: {ip} | Failed attempts: {attempt_count}")

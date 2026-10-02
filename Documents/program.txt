@@ -1,4 +1,4 @@
-This simple program is divied into 5 parts. Follow each part to complete it and make  sure to test after every part is done.
+This simple program is divied into  parts. Follow each part to complete it and make  sure to test after every part is done.
 
 
 
@@ -45,3 +45,4 @@ Step 2: Verify the log entries we made in sample.log
 Step 1: Read the security log file 
 Step 2: Detect successful and failed logins {in sample.log for now, later it will be in live.log}
 Step 3: Detect sign-ins & logouts
+Step 4: Extract failed-login IPs and count attempts per IP
