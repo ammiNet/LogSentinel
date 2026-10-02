@@ -13,11 +13,13 @@ def total_lines():
 
     return entries
 
+entrieslines = total_lines()
 
 
 # functions to get succesful anf failed logins attempts
 successful_attempts = []
 failed_attempts = []
+
 
 
 for lines in total_lines():
@@ -27,9 +29,18 @@ for lines in total_lines():
     elif "Login failed" in lines:
         failed_attempts.append(lines)    
 
+# getting total no of users that signed in and logged out 
+signed_in = []
+signed_out = []
 
+for line_in in total_lines():
+    if "Signed In" in line_in:
+        signed_in.append(line_in)
 
-entrieslines = total_lines()
+for line_out in total_lines():
+    if  "Logout" in line_out:
+        signed_out.append(line_out)        
+
 
 
 print(f"Total entries found : {len(entrieslines)}")
@@ -38,3 +49,5 @@ print(Fore.GREEN + f"Total succesful logins : {len(successful_attempts)}")
 print(Fore.RED + f"Total failed logins : {len(failed_attempts)}")
 
 
+print(f"Total signed in users : {len(signed_in)}")
+print(f"Total signed out users : {len(signed_out)}")

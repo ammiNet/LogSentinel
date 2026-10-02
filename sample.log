@@ -3,8 +3,9 @@
 2026-09-29 09:02:00 INFO Login successful username=emma ip=192.168.1.12
 2026-09-29 09:03:00 WARNING Login failed username=thomas ip=203.0.113.15
 2026-09-29 09:04:00 WARNING Login failed username=thomas ip=203.0.113.15
-2026-09-29 09:05:00 INFO User logout username=john ip=192.168.1.10
+2026-09-29 09:05:00 INFO User Logout username=john ip=192.168.1.10
 2026-09-29 09:06:00 INFO User registered username=oliver ip=192.168.1.14
 2026-09-29 09:07:00 INFO Login successful username=oliver ip=192.168.1.14
 2026-09-29 09:08:00 WARNING Login failed username=william ip=198.51.100.23
-2026-09-29 09:09:00 INFO User logout username=emma ip=192.168.1.12
+2026-09-29 09:09:00 INFO User Logout username=emma ip=192.168.1.12
+2026-09-29 09:09:10 INFO User Signed In username=em1ma ip=192.168.1.121
