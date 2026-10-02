@@ -47,3 +47,5 @@ Step 2: Detect successful and failed logins {in sample.log for now, later it wil
 Step 3: Detect sign-ins & logouts
 Step 4: Extract failed-login IPs and count attempts per IP
 Step 5: Detect suspicious IPs
+
+Step 6: Save the report in a file 

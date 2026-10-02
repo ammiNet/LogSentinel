@@ -1,0 +1,7 @@
+LogSentinel Security Report
+===========================
+Total entries found: 11
+Successful logins: 3
+Failed logins: 4
+Signed in entries: 1
+Signed out entries: 2

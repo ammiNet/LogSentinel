@@ -78,3 +78,31 @@ for ip in set(failed_login_ips):
         for line in failed_attempts:
             if ip in line:
                 print(line.strip())
+
+
+
+
+
+
+
+
+# report saving        
+
+
+save_report = input("Do you wanna save this report in a file? yes or no : ")
+
+
+if save_report.lower() == "yes":
+    with open("security_report.txt", "w") as report:
+        report.write("LogSentinel Security Report\n")
+        report.write("===========================\n")
+        report.write(f"Total entries found: {len(entrieslines)}\n")
+        report.write(f"Successful logins: {len(successful_attempts)}\n")
+        report.write(f"Failed logins: {len(failed_attempts)}\n")
+        report.write(f"Signed in entries: {len(signed_in)}\n")
+        report.write(f"Signed out entries: {len(signed_out)}\n")
+
+    print(Fore.GREEN + "Report saved to report_log_analyzer.txt")
+
+else:
+    print("Report was not saved, as you pressed no!")
