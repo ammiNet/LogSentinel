@@ -50,3 +50,11 @@ Step 5: Detect suspicious IPs
 
 Step 6: Save the report in a file 
 Step 7: improving the report file, Completing terminal security log analyzer
+
+
+
+
+
+{{{{  PART - 4 }}}}
+
+Step 1: Flask application
