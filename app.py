@@ -62,7 +62,19 @@ print(f"Total signed out users : {len(signed_out)}")
 
 
 # loop for failed ip
-print("\nFailed login attempts by IP:")
+print("\nSuspicious IP detection:")
+
 for ip in set(failed_login_ips):
     attempt_count = failed_login_ips.count(ip)
-    print(f"IP: {ip} | Failed attempts: {attempt_count}")
+
+    if attempt_count >= 3:
+        print(
+            Fore.RED
+            + f"WARNING!!! Suspicious IP detected: {ip} | Failed attempts: {attempt_count}"
+        )
+
+        print("Failed login entries from this IP:")
+
+        for line in failed_attempts:
+            if ip in line:
+                print(line.strip())
