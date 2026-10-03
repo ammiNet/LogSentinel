@@ -60,4 +60,4 @@ move the code from app.py to main.py, since app.py is the file where we would se
 {{{{  PART - 4 }}}}
 
 Step 1: Flask application
-Step 2: 
+Step 2: setting up SQlite database and initialize_database()
