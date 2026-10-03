@@ -69,3 +69,5 @@ Step 5: Creating routes
 now updating the files in templates folder
 
 Step 6: adding frontend desgin in files (copy and paste the html files code)
+
+Step 7: User Dashboard and Admin Dashboard
