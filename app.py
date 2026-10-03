@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request, render_template, redirect, url_for
 from pathlib import Path
 from datetime import datetime
 import sqlite3       # importing the sql database
@@ -54,6 +54,46 @@ def save_log(level, message, username="", ip=""):
 
     with open(LOG_PATH, "a", encoding="utf-8") as log_file:
         log_file.write(log_entry)
+
+
+# function for getting user's IP address
+
+def get_ip():
+    return request.remote_addr or "unknown"
+
+
+# registration route
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+
+        # checking if username and password were entered
+
+        if not username or not password:
+            return "Username and password are required"
+
+        # saving user into database
+
+        connection = getting_db()
+
+        connection.execute(
+            "INSERT INTO users (username, password) VALUES (?, ?)",
+            (username, password)
+        )
+
+        connection.commit()
+        connection.close()
+
+        # saving registration event in log
+
+        save_log("INFO", "User registered", username, get_ip())
+
+        return "Registration successful"
+
+    return render_template("register.html")
 
 
 if __name__ == "__main__":
