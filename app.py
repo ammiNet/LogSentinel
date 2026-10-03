@@ -1,9 +1,10 @@
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, request, render_template, redirect, url_for, session
 from pathlib import Path
 from datetime import datetime
 import sqlite3       # importing the sql database
 
 app = Flask(__name__)
+app.secret_key = "pls-use-your-secret-key"
 
 BASE_DIR = Path(__file__).resolve().parent
 LOG_PATH = BASE_DIR / "live.log"
@@ -94,6 +95,34 @@ def register():
         return "Registration successful"
 
     return render_template("register.html")
+
+
+# login route
+
+@app.route("/", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+
+        connection = getting_db()
+
+        user = connection.execute(
+            "SELECT * FROM users WHERE username = ?",
+            (username,)
+        ).fetchone()
+
+        connection.close()
+
+        if user and user["password"] == password:
+            session["username"] = user["username"]
+            session["role"] = user["role"]
+
+            return "Login successful"
+
+        return "Invalid username or password"
+
+    return render_template("login.html")
 
 
 if __name__ == "__main__":
