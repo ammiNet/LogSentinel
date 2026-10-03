@@ -20,7 +20,7 @@ def getting_db():
 
 
 # function for initializing the database
-
+# creates a table named users, containing id username password and role=user and date/time
 def initialize_database():
     connection = getting_db()
 
@@ -43,7 +43,7 @@ def initialize_database():
 initialize_database()
 
 
-# function for saving security logs
+# function for saving the security logs in livelog
 
 def save_log(level, message, username="", ip=""):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -71,12 +71,10 @@ def register():
         username = request.form["username"]
         password = request.form["password"]
 
-        # checking if username and password were entered
-
         if not username or not password:
             return "Username and password are required"
 
-        # saving user into database
+        # saving details of user into database
 
         connection = getting_db()
 
@@ -88,7 +86,6 @@ def register():
         connection.commit()
         connection.close()
 
-        # saving registration event in log
 
         save_log("INFO", "User registered", username, get_ip())
 
@@ -97,14 +94,12 @@ def register():
     return render_template("register.html")
 
 
-# login route
 
 @app.route("/", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
-
         connection = getting_db()
 
         user = connection.execute(
@@ -125,5 +120,48 @@ def login():
     return render_template("login.html")
 
 
+# admin dashboard route
+@app.route("/dashboard")
+def dashboard():
+    if "username" not in session:
+        return redirect(url_for("login"))
+
+    if session.get("role") != "admin":
+        return "Access denied", 403
+
+    return render_template("dashboard.html")
+
+
+
+# user dashboard route
+
+@app.route("/user-dashboard")
+def user_dashboard():
+    if "username" not in session:
+        return redirect(url_for("login"))
+
+    return render_template(
+        "user_dashboard.html",
+        username=session["username"]
+    )
+
+
+
+# logout route
+@app.route("/logout")
+def logout():
+    username = session.get("username")
+
+    if username:
+        save_log("INFO", "Logout", username, get_ip())
+
+    session.clear()
+
+    return redirect(url_for("login"))
+
+
+
+
 if __name__ == "__main__":
     app.run(debug=True)
+

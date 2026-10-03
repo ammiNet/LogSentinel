@@ -63,3 +63,9 @@ Step 1: Flask application
 Step 2: setting up SQlite database and initialize_database()
 Step 3: get_ip() function and making registration route validation it too
 Step 4: creating a login route and authenticating it
+Step 5: Creating routes
+
+
+now updating the files in templates folder
+
+Step 6: adding frontend desgin in files (copy and paste the html files code)
