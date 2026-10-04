@@ -123,15 +123,18 @@ def login():
             session["username"] = user["username"]
             session["role"] = user["role"]
 
+            save_log("INFO", "Login successful", username, get_ip())
+
             if user["role"] == "admin":
                 return redirect("/dashboard")
 
             return redirect("/user-dashboard")
 
+        save_log("WARNING", "Login failed", username, get_ip())
+
         return "Invalid username or password"
 
     return render_template("login.html")
-
 
 # admin dashboard route
 
