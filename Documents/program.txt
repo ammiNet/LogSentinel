@@ -75,3 +75,5 @@ Step 8: connecting the admin dashboard with app.py  ( analyzer.py file code)
 
 Step 9: creating an admin username and password. (an admin username and passord can only be created by running create_admin.py file)
 Step 10: fixing some duplicate code in app.py
+
+Step 11: Admin dashboard filtering system

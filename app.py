@@ -143,14 +143,17 @@ def dashboard():
     if session.get("role") != "admin":
         return "Access denied", 403
 
-    log_data = analyze_logs()
+    search = request.args.get("search", "")
+    log_type = request.args.get("log_type", "all")
+
+    log_data = analyze_logs(search, log_type)
 
     return render_template(
         "dashboard.html",
         username=session["username"],
         log_data=log_data,
-        search="",
-        log_type="all"
+        search=search,
+        log_type="log_type"
     )
 
 
