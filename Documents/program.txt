@@ -72,3 +72,5 @@ Step 6: adding frontend desgin in files (copy and paste the html files code)
 
 Step 7: User Dashboard and Admin Dashboard
 Step 8: connecting the admin dashboard with app.py  ( analyzer.py file code)
+
+Step 9: creating an admin username and password. (an admin username and passord can only be created by running create_admin.py file)
