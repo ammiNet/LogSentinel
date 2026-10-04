@@ -79,3 +79,5 @@ Step 10: fixing some duplicate code in app.py
 Step 11: Admin dashboard filtering system
 Step 12: fixing the chart on admin dashboard
 Step 13: Fixing a small issue in filter search dropdown
+
+Step 14: testing everything (Complete Flask web application)
