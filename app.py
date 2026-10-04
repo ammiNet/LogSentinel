@@ -156,7 +156,7 @@ def dashboard():
         username=session["username"],
         log_data=log_data,
         search=search,
-        log_type="log_type"
+        log_type=log_type
     )
 
 
