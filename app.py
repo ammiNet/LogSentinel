@@ -1,8 +1,9 @@
 from flask import Flask, request, render_template, redirect, url_for, session
 from pathlib import Path
 from datetime import datetime
-import sqlite3       # importing the sql database
+import sqlite3
 from analyzer import analyze_logs
+
 
 app = Flask(__name__)
 app.secret_key = "pls-use-your-secret-key"
@@ -22,6 +23,7 @@ def getting_db():
 
 # function for initializing the database
 # creates a table named users, containing id username password and role=user and date/time
+
 def initialize_database():
     connection = getting_db()
 
@@ -44,7 +46,7 @@ def initialize_database():
 initialize_database()
 
 
-# function for saving the security logs in livelog
+# function for saving the security logs in live.log
 
 def save_log(level, message, username="", ip=""):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -79,14 +81,19 @@ def register():
 
         connection = getting_db()
 
-        connection.execute(
-            "INSERT INTO users (username, password) VALUES (?, ?)",
-            (username, password)
-        )
+        try:
+            connection.execute(
+                "INSERT INTO users (username, password) VALUES (?, ?)",
+                (username, password)
+            )
 
-        connection.commit()
+            connection.commit()
+
+        except sqlite3.IntegrityError:
+            connection.close()
+            return "Username already exists. Please choose another username."
+
         connection.close()
-
 
         save_log("INFO", "User registered", username, get_ip())
 
@@ -95,12 +102,14 @@ def register():
     return render_template("register.html")
 
 
+# login route
 
 @app.route("/", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
+
         connection = getting_db()
 
         user = connection.execute(
@@ -114,7 +123,10 @@ def login():
             session["username"] = user["username"]
             session["role"] = user["role"]
 
-            return redirect("/dashboard")
+            if user["role"] == "admin":
+                return redirect("/dashboard")
+
+            return redirect("/user-dashboard")
 
         return "Invalid username or password"
 
@@ -122,6 +134,7 @@ def login():
 
 
 # admin dashboard route
+
 @app.route("/dashboard")
 def dashboard():
     if "username" not in session:
@@ -140,6 +153,7 @@ def dashboard():
         log_type="all"
     )
 
+
 # user dashboard route
 
 @app.route("/user-dashboard")
@@ -153,8 +167,8 @@ def user_dashboard():
     )
 
 
-
 # logout route
+
 @app.route("/logout")
 def logout():
     username = session.get("username")
@@ -165,8 +179,6 @@ def logout():
     session.clear()
 
     return redirect(url_for("login"))
-
-
 
 
 if __name__ == "__main__":
