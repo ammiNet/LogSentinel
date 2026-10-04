@@ -71,3 +71,4 @@ now updating the files in templates folder
 Step 6: adding frontend desgin in files (copy and paste the html files code)
 
 Step 7: User Dashboard and Admin Dashboard
+Step 8: connecting the admin dashboard with app.py  ( analyzer.py file code)

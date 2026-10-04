@@ -2,6 +2,7 @@ from flask import Flask, request, render_template, redirect, url_for, session
 from pathlib import Path
 from datetime import datetime
 import sqlite3       # importing the sql database
+from analyzer import analyze_logs
 
 app = Flask(__name__)
 app.secret_key = "pls-use-your-secret-key"
@@ -113,7 +114,7 @@ def login():
             session["username"] = user["username"]
             session["role"] = user["role"]
 
-            return "Login successful"
+            return redirect("/dashboard")
 
         return "Invalid username or password"
 
@@ -129,9 +130,15 @@ def dashboard():
     if session.get("role") != "admin":
         return "Access denied", 403
 
-    return render_template("dashboard.html")
+    log_data = analyze_logs()
 
-
+    return render_template(
+        "dashboard.html",
+        username=session["username"],
+        log_data=log_data,
+        search="",
+        log_type="all"
+    )
 
 # user dashboard route
 
