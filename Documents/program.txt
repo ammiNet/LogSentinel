@@ -1,9 +1,11 @@
-This simple program is divied into  parts. Follow each part to complete it and make  sure to test after every part is done.
+LogSentinel V1 - a Python/Flask-based security log analyzer
+
+This simple program is divied into 4 parts. Follow each part to complete it and make  sure to test after every part is done.
 
 
 
 
-{{{{  PART - 1 }}}}
+{{{{  PART - 1 }}}}   Project Setup
 
 
 
@@ -33,14 +35,14 @@ make files and move to next step
 
 
 
-{{{{  PART - 2 }}}}
+{{{{  PART - 2 }}}} Basic Structure and log data 
 
 
 Step 1: Create a simple sample security-log entries in file "sample.log" {purpose: just for testing}
 Step 2: Verify the log entries we made in sample.log
 
 
-{{{{  PART - 3 }}}}
+{{{{  PART - 3 }}}}  Terminal Security Log
 
 Step 1: Read the security log file 
 Step 2: Detect successful and failed logins {in sample.log for now, later it will be in live.log}
@@ -57,7 +59,8 @@ move the code from app.py to main.py, since app.py is the file where we would se
 ]]]
 
 
-{{{{  PART - 4 }}}}
+
+{{{{  PART - 4 }}}} Flask Web Application
 
 Step 1: Flask application
 Step 2: setting up SQlite database and initialize_database()
@@ -81,3 +84,8 @@ Step 12: fixing the chart on admin dashboard
 Step 13: Fixing a small issue in filter search dropdown
 
 Step 14: testing everything (Complete Flask web application)
+
+
+
+Now, this program has been completed. 
+Its called LogSentinel but soon LogSentinel V2 will be coming with better designs and even more detection logic.
